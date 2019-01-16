@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>WebVR</title>
-    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v5.0.1/dist/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
@@ -15,16 +15,17 @@
 
   <body>
     <a-scene physics rain>
-      <a-sphere src="https://media.swncdn.com/cms/BST/53887-earth-map.800w.tn.jpg" position="0 1.5 -4" scale="1 1 1">
-        <a-animation attribute="position" to="0 2.2 -5" direction="alternate" dur="2000"
+      <a-sphere src="https://media.swncdn.com/cms/BST/53887-earth-map.800w.tn.jpg" position="0 0.5 -4" scale="1 1 1">
+        <a-animation attribute="position" to="0 -1 -5" direction="alternate" dur="2000"
         repeat="indefinite"></a-animation>
       </a-sphere>
 
-      <a-entity id="ocean" ocean="density: 20; width: 50; depth: 50; speed: 4"
-                src="https://vgy.me/FjOiHJ.jpg"
+      <a-entity id="ocean" ocean="density: 25; width: 50; depth: 40; speed: 10"
+                position="0 -3 0"
+                src="https://vgy.me/FjOiHJ.jpg" 
                 rotation="-90 0 0"></a-entity>
 
-    <a-sky src="https://vgy.me/YQIGe5.jpg"></a-sky>
+      <a-sky src="https://vgy.me/YQIGe5.jpg"></a-sky>
 
       <a-camera>
         <a-cursor></a-cursor>
