@@ -7,23 +7,23 @@
     <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v5.0.1/dist/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="https://rawgit.com/takahirox/aframe-rain/master/build/aframe-rain.min.js"></script>
+    <script src="https://unpkg.com/aframe-extras.ocean@%5E3.5.x/dist/aframe-extras.ocean.min.js"></script>
 
   </head>
+
   <body>
-    <a-scene physics>
-      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"
+    <a-scene physics rain>
+      <a-sphere src="https://media.swncdn.com/cms/BST/53887-earth-map.800w.tn.jpg" position="0 1.5 -4" scale="1 1 1">
+        <a-animation attribute="position" to="0 2.2 -5" direction="alternate" dur="2000"
+        repeat="indefinite"></a-animation>
+      </a-sphere>
 
-             event-set__enter="_event: mouseenter; color: #8FF7FF"
-             event-set__leave="_event: mouseleave; color: #4CC3D9"
-
-             event-set__up="_event: mouseup; scale: 1 1 1"
-             event-set__down="_event: mousedown; scale: 1.5 1.5 1.5"
-             event-set__leave="_event: mouseleave; scale: 1 1 1"
-             ></a-box>
-
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" static-body></a-plane>
-
-      <a-sky color="#ECECEC"></a-sky>
+      <a-entity id="ocean" ocean="density: 20; width: 50; depth: 50; speed: 4"
+                material="color: #9CE3F9; opacity: 0.75; metalness: 0; roughness: 1"
+                rotation="-90 0 0"></a-entity>
+    <a-sky src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/f49e62e3-9d09-4452-a762-f750621d25bd/d77gh54-8a8db3c6-3b1b-4c92-acf2-b624f68dc0f4.jpg/v1/fill/w_1138,h_702,q_70,strp/free_space_galaxy_texture_by_lyshastra_d77gh54-pre.jpg"></a-sky>
 
       <a-camera>
         <a-cursor></a-cursor>
