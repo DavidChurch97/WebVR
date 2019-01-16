@@ -16,8 +16,13 @@
     <a-scene physics>
       <a-entity id="rain" particle-system="preset: rain; color: #24CAFF; particleCount: 5000"></a-entity>
 
-      <a-sphere src="https://media.swncdn.com/cms/BST/53887-earth-map.800w.tn.jpg" position="0 0.5 -4" scale="1 1 1">
-        <a-animation attribute="position" to="0 -1 -5" direction="alternate" dur="2000"
+      <a-sphere id="earth" src="https://media.swncdn.com/cms/BST/53887-earth-map.800w.tn.jpg" position="0 0.5 -4" scale="1 1 1">
+        <a-animation attribute="position" to="0 -1 -4" direction="alternate" dur="2000"
+        repeat="indefinite"></a-animation>
+      </a-sphere>
+
+      <a-sphere id="mars" src="https://vgy.me/pWSxzJ.jpg" position="0 0.5 -8" scale="1 1 1">
+        <a-animation attribute="position" to="0 -1 -8" direction="alternate" dur="2000"
         repeat="indefinite"></a-animation>
       </a-sphere>
 
