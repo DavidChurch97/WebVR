@@ -5,49 +5,52 @@
     <title>WebVR</title>
     <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    <script src="https://rawgit.com/takahirox/aframe-rain/master/build/aframe-rain.min.js"></script>
+    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+    <script src="https://rawgit.com/rdub80/aframe-teleport-extras/master/dist/aframe-teleport-extras.min.js"></script>
   </head>
 
   <body>
-    <a-scene>
+    <a-scene rain="count: 3000;">
       <a-assets>
         <!-- Pulling the models from github repo -->
         <a-asset-item id="light" src="https://raw.githubusercontent.com/DavidChurch97/WebVR_GLTF/master/noFire.gltf"></a-asset-item>
         <a-asset-item id="noLight" src="https://raw.githubusercontent.com/DavidChurch97/WebVR_GLTF/master/noFire2.gltf"></a-asset-item>
       </a-assets>
 
-      <!-- Importing the enviroment from section above -->
-      <!--Right Section-->
-      <a-entity gltf-model="#noLight" position="9.5 -2.5 -18" rotation="0 90 0"></a-entity>
-      <a-entity gltf-model="#noLight" position="-9.5 -2.5 -18" rotation="0 -180 0"></a-entity>
+      <a-entity environment="preset: forest; playArea: 0; groundTexture: walkernoise; ground: flat;"></a-entity>
 
-      <!--Middle section-->
-      <a-entity gltf-model="#light" position="-9.5 -2.5 0" rotation="0 180 0"></a-entity>
-      <a-entity gltf-model="#noLight" position="9.5 -2.5 0" rotation="0 90 0"></a-entity>
+      <!-- interact with an object -->    
+    <a-box class="selectable" position="-1 0.75 -3" rotation="45 45 0" color="pink"
+      event-set__down="_event: mousedown; material.color: red; scale: 2 2 2"></a-box>
 
-      <!--Left Section-->
-      <a-entity gltf-model="#noLight" position="-9.5 -2.5 18" rotation="0 90 0"></a-entity>
-      <a-entity gltf-model="#noLight" position="9.5 -2.5 18" rotation="0 90 0"></a-entity>
+    <a-entity id="cameraRig" position="0 1.6 0" >
 
-      <!--box interaction -->
-      <a-entity animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
-        <a-box id="box" position="0 0.5 -5" rotation="0 45 0" color="#4CC3D9"
-              animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
-              event-set__down="_event: mousedown; position: 0 0 5">
-         </a-box>
+      <!-- camera -->    
+      <a-entity id="head" position="0 0 0" camera="userHeight:1.6" look-controls="pointerLockEnabled:true">
+
+        <!-- gaze controls -->
+        <a-entity id="teleporter-mobile" position=".2 -.1 0"
+          raycaster=
+                  "objects: .selectable; far: 2"
+          teleport-extras
+          teleport-controls=
+                  "cameraRig: #cameraRig;
+                   teleportOrigin: #head;
+                   startEvents:starttouch;
+                   endEvents:endtouch;
+                   curveShootingSpeed:15;
+                   hitCylinderRadius:0.5;">
+        </a-entity>
+
+        <!-- optional cursor controls to interact with .selectable objects -->        
+        <a-cursor toggle-on-event="raycasterObject: #teleporter-mobile" visible="false" position="0 0 -.05" scale="0.5 0.5 0.5" color="green"></a-cursor>
       </a-entity>
-      
-      <!-- Camera controls + the cursor design & interaction -->
-      <a-camera >
-        <a-cursor>
-        </a-cursor>
-      </a-camera>
 
-      <!-- Backgroud sky image import -->
-      <a-assets>
-        <img id="sky" src="https://raw.githubusercontent.com/DavidChurch97/WebVR_GLTF/master/sky.png">
-      </a-assets>
-      <a-sky src="#sky"></a-sky>
+    </a-entity> 
 
     </a-scene>
   </body>
 </html>
+
