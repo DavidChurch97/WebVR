@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>WebVR</title>
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    <script src="https://rawgit.com/takahirox/aframe-rain/master/build/aframe-rain.min.js"></script>
+
+    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+    <script src="https://rawgit.com/rdub80/aframe-teleport-extras/master/dist/aframe-teleport-extras.min.js"></script>
+  </head>
+
+  <body>
+    <a-scene rain="count: 3000;">
+
+      <a-entity environment="preset: forest; playArea: 0; groundTexture: walkernoise; ground: flat;"></a-entity>
+      
+      <a-entity id="cameraRig" position="0 1.6 0">
+        <!-- camera -->
+        <a-entity id="head" position="0 0 0" camera="userHeight:1.6" look-controls="pointerLockEnabled:true">
+          <a-entity id="teleporter-mobile" position=".2 -.1 0"
+            raycaster="objects: .selectable; far: 2"
+            teleport-extras teleport-controls=
+                    "cameraRig: #cameraRig;
+                     teleportOrigin: #head;
+                     startEvents:starttouch;
+                     endEvents:endtouch;
+                     curveShootingSpeed:15;
+                     hitCylinderRadius:1;"
+            >
+          </a-entity>
+        </a-entity>
+
+      </a-scene>
+  </body>
+</html>
+
