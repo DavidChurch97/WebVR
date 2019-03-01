@@ -16,32 +16,74 @@
   <!-- Custom styles  -->
   <link href="css/css.css" rel="stylesheet">
 
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet"> 
+
 </head>
 
 <body>
 
-  <div class="overlay"></div>
-  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-    <source src="mp4/bg.mp4" type="video/mp4">
-  </video>
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+      <source src="mp4/bg.mp4" type="video/mp4">
+    </video>
 
-  <div class="masthead">
-    <div class="masthead-bg"></div>
-    <div class="container h-100">
-      <div class="row h-100">
-        <div class="col-12 my-auto">
-          <div class="masthead-content text-white py-5 py-md-0">
-            <h1 class="mb-3">WebVR Adventure Game</h1>
-            <p class="mb-5">A VR experience in this new <strong>Adventure Game</strong> designed to work on the Google Cardboard</p>
-              <div class="input-group-append">
-                <a class="btn btn-secondary" type="button" href="./vr.html">Enter!</a>
+    <div class="masthead">
+      <div class="masthead-bg"></div>
+      <div class="container h-100">
+        <div class="row h-100">
+          <div class="col-12 my-auto">
+            <div class="masthead-content text-white py-5 py-md-0">
+              <h1 class="mb-3">WebVR Adventure Game</h1>
+              <p class="mb-5">A VR experience in this new <strong>Adventure Game</strong> designed to work on the Google Cardboard</p>
+                <div class="input-group-append">
+                  <a class="btn btn-secondary" type="button" href="/vr.html">Enter!</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+
+
+  <!-- About Section -->
+  <section id="about" class="about-section text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Built with A-Frame</h2>
+          <p> <a href="https://aframe.io/">A-Frame</a> is a web framework for building virtual reality (VR) experiences. A-Frame is based on top of HTML, making it simple to get started. But A-Frame is not just a 3D scene graph or a mark-up language; the core is a powerful entity-component framework that provides a declarative, extensible, and composable structure to three.js.
+          </p>
+        </div>
+      </div>
+      <img src="img/aframe.png">
+    </div>
+  </section>
+
+    <!-- About Section -->
+  <section id="cardboard" class="cardboard-section text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Built with A-Frame</h2>
+          <p> This adventure has been built for the use of a <a href="https://vr.google.com/cardboard/">Google Cardboard</a>. However, it is possible to enjoy this game through a computer as it uses the interactions of mouse controls.
+          </p>
+        </div>
+      </div>
+      <img src="img/cardboard.png">
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+<footer class="page-footer font-small cyan darken-3">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">
+      © 2019 Copyright:WebVR Adventures
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
 
   <!-- Bootstrap core JavaScript -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
