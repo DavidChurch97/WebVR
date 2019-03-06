@@ -1,58 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>WebVR Adventures</title>
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    <script src="https://rawgit.com/takahirox/aframe-rain/master/build/aframe-rain.min.js"></script>
 
-<head>
+    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+    <script src="https://rawgit.com/rdub80/aframe-teleport-extras/master/dist/aframe-teleport-extras.min.js"></script>
+  </head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="A VR Adventure game taken place in the browser">
-  <meta name="author" content="David Church">
+  <body>
+    <a-scene>
+    	<a-entity environment="preset: forest; playArea: 0; groundTexture: walkernoise; ground: flat;"></a-entity>
 
-  <title>VR Adventure</title>
+    	<a-assets>
+        <!-- Pulling the models from github repo -->
+        <a-asset-item id="light" src="https://raw.githubusercontent.com/DavidChurch97/WebVR_GLTF/master/noFire.gltf"></a-asset-item>
+        <a-asset-item id="noLight" src="https://raw.githubusercontent.com/DavidChurch97/WebVR_GLTF/master/noFire2.gltf"></a-asset-item>
+      </a-assets>
 
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <!-- Importing the enviroment from section above -->
+      <!--Right Section-->
+      <a-entity gltf-model="#noLight" position="9.5 -.9 -18" rotation="0 90 0"></a-entity>
+      <a-entity gltf-model="#noLight" position="-9.5 -.9 -18" rotation="0 -180 0"></a-entity>
 
-  <!-- Custom styles  -->
-  <link href="css/css.css" rel="stylesheet">
+      <!--Middle section-->
+      <a-entity gltf-model="#light" position="-9.5 -.9 0" rotation="0 180 0"></a-entity>
+      <a-entity gltf-model="#noLight" position="9.5 -.9 0" rotation="0 90 0"></a-entity>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet"> 
+      <!--Left Section-->
+      <a-entity gltf-model="#noLight" position="-9.5 -.9 18" rotation="0 90 0"></a-entity>
+      <a-entity gltf-model="#noLight" position="9.5 -.9 18" rotation="0 90 0"></a-entity>
 
-</head>
+    	<!-- camera/teleportation --> 
+    	<a-entity id="cameraRig" position="0 1.6 0" >
+	      <!-- camera -->    
+	      <a-entity id="head" position="0 0 0" camera="userHeight:1.6" look-controls="pointerLockEnabled:true">
+	      	<!-- gaze controls -->
+	        <a-entity id="teleporter-mobile" position=".2 -.1 0"
+	          raycaster=
+	                  "objects: .selectable; far: 2"
+	          teleport-extras
+	          teleport-controls=
+	                  "cameraRig: #cameraRig;
+	                   teleportOrigin: #head;
+	                   startEvents:starttouch;
+	                   endEvents:endtouch;
+	                   curveShootingSpeed:15;
+	                   hitCylinderRadius:1;"
+	          >
+	        </a-entity>
 
-<body>
-  <header class="masthead">
-    <div class="container d-flex h-100 align-items-center">
-      <div class="masthead-bg"></div>
-      <div class="container h-100">
-        <div class="row h-100">
-          <div class="col-12 my-auto">
-            <div class="masthead-content text-white py-5 py-md-0">
-              <h1 class="mb-3">WebVR Adventure Game</h1>
-              <p class="mb-5">A VR experience in this new <strong>Adventure Game</strong> designed to work on the Google Cardboard</p>
-                <div class="input-group-append">
-                  <a class="btn btn-secondary" type="button" href="vr.html">Enter!</a>
-                  <a class="btn btn-secondary" type="button" href="about.html">More Info!</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
+	      	<!-- optional cursor controls to interact with .selectable objects -->        
+	        <a-cursor toggle-on-event="raycasterObject: #teleporter-mobile" visible="false" position="0 0 -.05" scale="0.1 0.1 0.1" color="green"></a-cursor>
+	      </a-entity>
 
-    <div>
-      <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-        <source src="mp4/bg.mp4" type="video/mp4">
-      </video>
-    </div>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-</body>
-
+	    </a-entity>  
+	  </a-scene>
+  </body>
 </html>
+
