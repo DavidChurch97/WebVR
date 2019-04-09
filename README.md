@@ -1,6 +1,8 @@
 # Little Boxes
 
-![Logo](img/logo-readme.png)
+<p align="center">
+  <img src="img/logo-readme.png" />
+</p>
 
 Little Boxes is a VR puzzle game which has been developed to run in a browser via PC or mobile. The VR equipment which this has been developed primarily for is the Google Cardboard.
 
