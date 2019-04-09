@@ -6,7 +6,7 @@ html, body {
   font-weight: 300;
   color: #fff;
   margin: 0px;
-  padding: 0px;
+  padding: 0px; 
 }
 
 
@@ -175,6 +175,18 @@ video {
 }
 
 .about-section p {
+  margin-bottom: 5rem;
+}
+
+.tutorial-section {
+  padding-bottom: 1rem;
+  padding-top: 10rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background-color: #168b47;
+}
+
+.tutorial-section p {
   margin-bottom: 5rem;
 }
 
