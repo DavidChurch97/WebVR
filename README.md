@@ -19,7 +19,9 @@ This puzzle game has been built for the use of a Google Cardboard. However, it i
 # QR Code for Mobile Devices
 
 Scan this code on a mobile device to be taken to the landing page of this adventure game.
-![QR Code for Mobile](https://github.com/DavidChurch97/WebVR/blob/master/img/qr_code.png)
+<p align="center">
+  <img src="img/qr_code.png" />
+</p>
 
 # Extra bits
 <b>Models directory<b>
